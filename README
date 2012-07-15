@@ -1,0 +1,39 @@
+Description:
+ This code is to tooltip drop down option when mouse over. TooltipClass uses json data source .
+If this datasource is empty will fetch from ajax url passed from source list url.
+
+You can set a template for each tooltip for drop down box.
+
+sample source params to select particular select box.
+
+Usage:
+var dataSourceList = {
+    'portfolio': {
+        'targetElement': '#analysisjob_portfolio_id',
+        'url': '/portfolios',
+        'sourceName': 'portfolio',
+        'primaryKey': 'portfolio.PortfolioId',
+        'jasonData': {},
+        'template': "" +
+            "<%= item.Name%>" + "<br/>" +
+            "<i><%= item.Description%></i>" + "<br/>" +
+            ""
+     }
+}
+targetElement : select box id
+url: ajax url to fetch data
+sourceName: json root
+primaryKey: key with which we search for json data for each option
+template: you can define tooltip structure
+
+loadSource and call tooltipify function like this :
+       var source = dataSourceList.portfolio
+       var test = TooltipClass.initialize(source);
+        test.toolTipfy();
+
+Requirements:
+http://twitter.github.com/bootstrap/javascript.html (tooltip,popover)
+jquery
+underscore.js
+
+tested in firefox
